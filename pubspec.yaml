@@ -31,4 +31,56 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  #
+  fonts:
+    - family: AtHaussAero
+      fonts:
+        - asset: assets/fonts/AtHaussAero-LightItalic.ttf
+          style: italic
+          weight: 300
+        - asset: assets/fonts/AtHaussAero-MediumItalic.ttf
+          style: italic
+          weight: 500
+        - asset: assets/fonts/AtHaussAero-Air.ttf
+          weight: 200
+        - asset: assets/fonts/AtHaussAero-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/AtHaussAero-Semibold.ttf
+          weight: 600
+        - asset: assets/fonts/AtHaussAero-SuperItalic.ttf
+          style: italic
+          weight: 800
+        - asset: assets/fonts/AtHaussAero-SemiboldItalic.ttf
+          style: italic
+          weight: 600
+        - asset: assets/fonts/AtHaussAero-RetinaItalic.ttf
+          style: italic
+          weight: 700
+        - asset: assets/fonts/AtHaussAero-Super.ttf
+          weight: 800
+        - asset: assets/fonts/AtHaussAero-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/AtHaussAero-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/AtHaussAero-BoldItalic.ttf
+          style: italic
+          weight: 700
+        - asset: assets/fonts/AtHaussAero-Black.ttf
+          weight: 900
+        - asset: assets/fonts/AtHaussAero-ThinItalic.ttf
+          style: italic
+          weight: 100
+        - asset: assets/fonts/AtHaussAero-BlackItalic.ttf
+          style: italic
+          weight: 900
+        - asset: assets/fonts/AtHaussAero-Light.ttf
+          weight: 300
+        - asset: assets/fonts/AtHaussAero-Retina.ttf
+          weight: 700
+        - asset: assets/fonts/AtHaussAero-AirItalic.ttf
+          style: italic
+          weight: 200
+        - asset: assets/fonts/AtHaussAero-RegularItalic.ttf
+          style: italic
+          weight: 400
+        - asset: assets/fonts/AtHaussAero-Medium.ttf
+          weight: 500

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/models/credit_card_factor_model.dart';
 import 'package:meetava_pro/src/providers/credit_card_factor_provider.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_factor_card.dart';
+import 'package:meetava_pro/src/ui/widgets/base_header.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
 import '../../util/constants.dart';
 
@@ -15,26 +16,24 @@ class MeetAvaHome extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        shape: ROUNDED_RECTANGLE_BORDER,
-        leading: IconButton(
-            onPressed: () {
-              // To do implement the route here
-            },
-            icon: const Icon(
-              Icons.settings_outlined,
-              color: Colors.white,
-            )),
-        title: const Text(
-          'Home',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Palette.deepPurple,
-        bottom: const PreferredSize(
-            preferredSize: Size.fromHeight(100), child: Icon(Icons.camera)),
-      ),
+          //shape: ROUNDED_RECTANGLE_BORDER,
+          leading: IconButton(
+              onPressed: () {
+                // To do implement the route here
+              },
+              icon: const Icon(
+                Icons.settings_outlined,
+                color: Colors.white,
+              )),
+          title: const Text(
+            'Home',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Palette.deepPurple),
       body: SingleChildScrollView(
           child: Column(
         children: [
+          const BaseHeaderWidget(),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -43,10 +42,6 @@ class MeetAvaHome extends ConsumerWidget {
               }).toList(),
             ),
           ),
-          CreditFactorCard(
-              creditFactorModel: CreditFactorModel(
-                  title: 'title', number: '2', status: 'status'))
-          //CreditFactorCard(title: 'Payment History', number: 90, status: 'high')
         ],
       )),
     );
