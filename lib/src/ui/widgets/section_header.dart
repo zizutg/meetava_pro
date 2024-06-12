@@ -10,10 +10,14 @@ class SectionHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeText = ref.watch(textThemeProvider);
     return Container(
+      alignment: Alignment.bottomLeft,
+      width: double.infinity,
       child: Column(
         children: [
           huge_gap,
-          Text(title, style: themeText.headlineMedium,),
+          Text(title, style: themeText.displaySmall
+              //!.copyWith(fontWeight: FontWeight.bold),
+              ),
         ],
       ),
     );

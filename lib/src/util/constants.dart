@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -14,7 +15,7 @@ const TextTheme avaTextTheme = TextTheme(
   displayMedium: TextStyle(
       fontSize: 28.0, fontWeight: FontWeight.bold, color: Palette.deepPurple),
   displaySmall: TextStyle(
-      fontSize: 24.0, fontWeight: FontWeight.bold, color: Palette.medPurple),
+      fontSize: 24.0, fontWeight: FontWeight.normal, color: Palette.darkPurple),
   headlineLarge: TextStyle(
       fontSize: 20.0, fontWeight: FontWeight.bold, color: Palette.darkPurple),
   headlineMedium: TextStyle(
@@ -45,6 +46,11 @@ const TextTheme avaTextTheme = TextTheme(
 
 @riverpod
 TextTheme textTheme(ref) => avaTextTheme.apply(fontFamily: 'AtHaussAero');
+
+
+@riverpod
+List<int> monthlyScores(ref) => List.generate(12, (_) => 300 + Random().nextInt(551));
+
 
 const small_gap = SizedBox(height: 8);
 const med_gap = SizedBox(height: 16);
