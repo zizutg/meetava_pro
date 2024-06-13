@@ -7,7 +7,7 @@ part of 'credit_score_provider.dart';
 // **************************************************************************
 
 String _$creditScoreNotifierHash() =>
-    r'04f1c21bbf1a606604584760d65b151d3a732e52';
+    r'f38da28a3f923e91380bc95583ed2d235ae389de';
 
 /// See also [CreditScoreNotifier].
 @ProviderFor(CreditScoreNotifier)

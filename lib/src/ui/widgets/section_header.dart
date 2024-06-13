@@ -8,14 +8,14 @@ class SectionHeader extends ConsumerWidget {
   final String title;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeText = ref.watch(textThemeProvider);
+    final textTheme = ref.watch(textThemeProvider);
     return Container(
       alignment: Alignment.bottomLeft,
       width: double.infinity,
       child: Column(
         children: [
-          huge_gap,
-          Text(title, style: themeText.displaySmall
+          hugeGap,
+          Text(title, style: textTheme.displaySmall
               //!.copyWith(fontWeight: FontWeight.bold),
               ),
         ],

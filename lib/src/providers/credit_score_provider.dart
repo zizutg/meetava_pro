@@ -1,5 +1,6 @@
 import '../models/credit_score_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'dart:math';
 
 part 'credit_score_provider.g.dart';
 
@@ -11,6 +12,7 @@ class CreditScoreNotifier extends _$CreditScoreNotifier {
         header: 'header',
         subHeader: 'subHeader',
         points: 'points',
+        monthlyScores:List.generate(12, (_) => 300 + Random().nextInt(551)),
         score_provider_institiution_name: 'score_provider_institiution_name');
   }
 
@@ -32,4 +34,5 @@ class CreditScoreNotifier extends _$CreditScoreNotifier {
 
     return {description: score};
   }
+  
 }

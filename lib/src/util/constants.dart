@@ -47,12 +47,7 @@ const TextTheme avaTextTheme = TextTheme(
 @riverpod
 TextTheme textTheme(ref) => avaTextTheme.apply(fontFamily: 'AtHaussAero');
 
-
-@riverpod
-List<int> monthlyScores(ref) => List.generate(12, (_) => 300 + Random().nextInt(551));
-
-
-const small_gap = SizedBox(height: 8);
-const med_gap = SizedBox(height: 16);
-const large_gap = SizedBox(height: 24);
-const huge_gap = SizedBox(height: 32);
+const smallGap = SizedBox(height: 8);
+const medGap = SizedBox(height: 16);
+const largeGap = SizedBox(height: 24);
+const hugeGap = SizedBox(height: 32);
