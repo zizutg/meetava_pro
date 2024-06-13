@@ -9,6 +9,7 @@ class SectionHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
+      padding: AppPadding.allSmall.copyWith(right: 0, top: 0, bottom: 0),
       alignment: Alignment.bottomLeft,
       width: double.infinity,
       child: Column(

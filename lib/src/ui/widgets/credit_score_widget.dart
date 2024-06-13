@@ -18,8 +18,7 @@ class CreditScoreWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final creditScoreData = ref.watch(creditScoreNotifierProvider);
     final creditScoreNotifier = ref.read(creditScoreNotifierProvider.notifier);
-    final Map<String, int> radialChartData =
-        creditScoreNotifier.getDescriptionAndScore();
+    creditScoreNotifier.getDescriptionAndScore();
 
     return WhiteRoundedConstainer(
         child: Column(
@@ -70,8 +69,7 @@ class YearlyChart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final creditScoreData = ref.watch(creditScoreNotifierProvider);
-    final creditScoreNotifier = ref.read(creditScoreNotifierProvider.notifier);
-    //creditScoreNotifier.toggleVisibility();
+    ref.read(creditScoreNotifierProvider.notifier);
 
     return SizedBox(
       height: 128,

@@ -6,6 +6,7 @@ import 'package:meetava_pro/src/ui/widgets/base_header.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_score_widget.dart';
 import 'package:meetava_pro/src/ui/widgets/section_header.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
+import 'package:go_router/go_router.dart';
 
 class MeetAvaHome extends ConsumerWidget {
   const MeetAvaHome({super.key});
@@ -20,6 +21,7 @@ class MeetAvaHome extends ConsumerWidget {
           leading: IconButton(
               onPressed: () {
                 // To do implement the route here
+                GoRouter.of(context).push('/emp_disp');
               },
               icon: const Icon(
                 Icons.settings_outlined,
@@ -40,6 +42,7 @@ class MeetAvaHome extends ConsumerWidget {
           ),
           const SectionHeader(title: 'Credit factors'),
           SingleChildScrollView(
+            padding: const EdgeInsets.only(left: 16),
             scrollDirection: Axis.horizontal,
             child: Row(
               children: creditCardFactors.map((factor) {

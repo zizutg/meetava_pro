@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_score_widget.dart';
-import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
 
 class BaseHeaderWidget extends ConsumerWidget {
