@@ -9,11 +9,11 @@ class CreditScoreNotifier extends _$CreditScoreNotifier {
   @override
   CreditScoreModel build() {
     return CreditScoreModel(
-        header: 'header',
-        subHeader: 'subHeader',
-        points: 'points',
-        monthlyScores:List.generate(12, (_) => 300 + Random().nextInt(551)),
-        score_provider_institiution_name: 'score_provider_institiution_name');
+        header: 'Credit Score',
+        subHeader: 'Updated Today · Next May 12',
+        points: '+2pts',
+        monthlyScores: List.generate(12, (_) => 300 + Random().nextInt(551)),
+        score_provider_institiution_name: 'Experian');
   }
 
   Map<String, int> getDescriptionAndScore() {
@@ -34,5 +34,4 @@ class CreditScoreNotifier extends _$CreditScoreNotifier {
 
     return {description: score};
   }
-  
 }

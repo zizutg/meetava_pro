@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/models/credit_card_factor_model.dart';
 import 'package:meetava_pro/src/providers/credit_card_factor_provider.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_factor_card.dart';
 import 'package:meetava_pro/src/ui/widgets/base_header.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_score_widget.dart';
 import 'package:meetava_pro/src/ui/widgets/section_header.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
-import '../../util/constants.dart';
-import 'package:faker/faker.dart';
 
 class MeetAvaHome extends ConsumerWidget {
   const MeetAvaHome({super.key});

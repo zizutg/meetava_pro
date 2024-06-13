@@ -23,8 +23,22 @@ class CreditScoreWidget extends ConsumerWidget {
         Row(
           children: [
             // Column for the text and points widget
-            const Column(
-              children: [],
+            Column(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  creditScoreData.header,
+                  style:
+                      textTheme.titleLarge!.copyWith(color: Palette.darkPurple),
+                ),
+                Text(
+                  creditScoreData.subHeader,
+                  style: textTheme.bodyMedium,
+                ),
+                smallGap,
+                Text(creditScoreData.score_provider_institiution_name)
+              ],
             ),
             // Radial Bar goes here
             Visibility(
