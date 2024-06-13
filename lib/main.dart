@@ -4,6 +4,7 @@ import 'package:meetava_pro/src/ui/screens/employment_display_screen.dart';
 import 'package:meetava_pro/src/ui/screens/employment_edit_screen.dart';
 import 'package:meetava_pro/src/ui/screens/home_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meetava_pro/src/util/color_palette.dart';
 
 void main() {
   runApp(ProviderScope(child: MeetAvaApp()));
@@ -36,6 +37,7 @@ class MeetAvaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.grey.shade200),
       debugShowCheckedModeBanner: false,
       routerDelegate: _router.routerDelegate,
       routeInformationParser: _router.routeInformationParser,

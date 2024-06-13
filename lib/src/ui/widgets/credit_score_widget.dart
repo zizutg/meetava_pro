@@ -32,17 +32,34 @@ class CreditScoreWidget extends ConsumerWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  creditScoreData.header,
-                  style: AppTextStyles.headlineMedium
-                      .copyWith(color: Palette.darkPurple),
+                Row(
+                  children: [
+                    Text(
+                      creditScoreData.header,
+                      style: AppTextStyles.headlineMedium
+                          .copyWith(color: Palette.darkPurple),
+                    ),
+                    AppGaps.hSmallGap,
+                    Container(
+                      //color: Palette.medGreen,
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Palette.medGreen),
+                      child: Text(
+                        creditScoreData.points,
+                        style: AppTextStyles.bodyMedium
+                            .copyWith(color: Palette.white),
+                      ),
+                    )
+                  ],
                 ),
                 Text(
                   creditScoreData.subHeader,
                   style: AppTextStyles.bodyMedium
                       .copyWith(color: Palette.lightPurple),
                 ),
-                AppGaps.smallGap,
+                AppGaps.vSmallGap,
                 Text(
                   creditScoreData.dataSource,
                   style: AppTextStyles.bodySmall.copyWith(
@@ -50,7 +67,7 @@ class CreditScoreWidget extends ConsumerWidget {
                 )
               ],
             ),
-            const Expanded(child: AppGaps.smallGap),
+            const Expanded(child: AppGaps.vSmallGap),
             if (atBaseHeader) CircleScoreWidget(),
           ],
         ),

@@ -17,42 +17,37 @@ class CreditFactorCard extends ConsumerWidget {
 
     return Card(
       elevation: 1,
+      color: Palette.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: AppPadding.allMedium,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AppGaps.smallGap,
+            AppGaps.vSmallGap,
             SizedBox(
-              width: 90,
+              width: 100,
               child: Center(
                 child: Text(
                   creditFactorModel.title,
                   softWrap: true,
                   overflow: TextOverflow.visible,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Palette.darkPurple,
-                  ),
+                  style: AppTextStyles.headlineSmall
+                      .copyWith(fontSize: 14, color: Palette.darkPurple),
                 ),
               ),
             ),
-            AppGaps.medGap,
+            AppGaps.vMedGap,
             Text(
               creditFactorModel.number,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Palette.deepPurple,
-              ),
+              style: AppTextStyles.headlineLarge
+                  .copyWith(color: Palette.deepPurple),
             ),
-            AppGaps.hugeGap,
+            AppGaps.vLargeGap,
             Container(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(

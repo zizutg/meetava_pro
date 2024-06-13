@@ -14,7 +14,7 @@ class SectionHeader extends ConsumerWidget {
       width: double.infinity,
       child: Column(
         children: [
-          AppGaps.hugeGap,
+          AppGaps.vHugeGap,
           Text(title, style: AppTextStyles.displaySmall
               //!.copyWith(fontWeight: FontWeight.bold),
               ),
