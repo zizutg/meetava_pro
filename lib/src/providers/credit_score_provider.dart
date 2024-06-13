@@ -13,8 +13,10 @@ class CreditScoreNotifier extends _$CreditScoreNotifier {
         subHeader: 'Updated Today · Next May 12',
         points: '+2pts',
         monthlyScores: List.generate(12, (_) => 300 + Random().nextInt(551)),
-        score_provider_institiution_name: 'Experian');
+        dataSource: 'Experian',
+    );
   }
+
 
   Map<String, int> getDescriptionAndScore() {
     int score = state.monthlyScores.last;

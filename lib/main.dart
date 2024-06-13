@@ -3,16 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/ui/screens/home_screen.dart';
 
 void main() {
-  runApp(ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MeetAvaApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MeetAvaApp extends StatelessWidget {
+  const MeetAvaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Meet Ava',
       debugShowCheckedModeBanner: false,
       home: MeetAvaHome(),
     );

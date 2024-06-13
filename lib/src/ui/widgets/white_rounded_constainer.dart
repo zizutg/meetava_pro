@@ -9,13 +9,20 @@ class WhiteRoundedConstainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Palette.white,
-          borderRadius: BorderRadius.circular(16)
+            border: Border.all(
+              color:
+                  Palette.lightPurple.withOpacity(0.2), // Color of the border
+              width: 1, // Width of the border
+            ),
+            color: Palette.white,
+            borderRadius: BorderRadius.circular(16)),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: child,
         ),
-        child: child,
       ),
     );
   }

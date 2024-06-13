@@ -26,7 +26,7 @@ class CreditFactorCard extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            smallGap,
+            AppGaps.smallGap,
             SizedBox(
               width: 90,
               child: Center(
@@ -43,7 +43,7 @@ class CreditFactorCard extends ConsumerWidget {
                 ),
               ),
             ),
-            medGap,
+            AppGaps.medGap,
             Text(
               creditFactorModel.number,
               style: const TextStyle(
@@ -52,7 +52,7 @@ class CreditFactorCard extends ConsumerWidget {
                 color: Palette.deepPurple,
               ),
             ),
-            hugeGap,
+            AppGaps.hugeGap,
             Container(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(

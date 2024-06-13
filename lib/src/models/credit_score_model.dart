@@ -2,8 +2,7 @@ class CreditScoreModel {
   final String header;
   final String subHeader;
   final String points;
-  final String score_provider_institiution_name;
-  bool atHeader = false;
+  final String dataSource;
   final List<int> monthlyScores;
 
   CreditScoreModel(
@@ -11,5 +10,7 @@ class CreditScoreModel {
       required this.subHeader,
       required this.points,
       required this.monthlyScores,
-      required this.score_provider_institiution_name});
+      required this.dataSource,
+    });
+
 }
