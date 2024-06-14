@@ -68,11 +68,11 @@ class CreditScoreWidget extends ConsumerWidget {
               ],
             ),
             const Expanded(child: AppGaps.vSmallGap),
-            if (atBaseHeader) CircleScoreWidget(),
+            if (atBaseHeader) const CircleScoreWidget(),
           ],
         ),
         // Chart goes here
-        if (!atBaseHeader) YearlyChart()
+        if (!atBaseHeader) const YearlyChart()
       ],
     ));
   }
@@ -122,7 +122,7 @@ class YearlyChart extends ConsumerWidget {
 }
 
 class CircleScoreWidget extends ConsumerWidget {
-  CircleScoreWidget({super.key});
+  const CircleScoreWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -141,12 +141,17 @@ class CircleScoreWidget extends ConsumerWidget {
               textAlign: TextAlign.center,
               text: TextSpan(
                 text: '${radialChartData.values.first}\n',
-                style: AppTextStyles.displayMedium
-                    .copyWith(color: Palette.darkPurple),
+                style: AppTextStyles.displayMedium.copyWith(
+                  color: Palette.darkPurple,
+                  fontFamily: 'AtSlamCndTRIAL',
+                  fontSize: 45,
+                  fontWeight: FontWeight.w500,
+                ),
                 children: [
                   TextSpan(
                     text: '${radialChartData.keys.first}',
-                    style: AppTextStyles.bodySmall,
+                    style: AppTextStyles.bodySmall
+                        .copyWith(fontFamily: 'AtHaussAero', height: 0.5),
                   ),
                 ],
               ),
@@ -156,7 +161,7 @@ class CircleScoreWidget extends ConsumerWidget {
         series: <CircularSeries>[
           DoughnutSeries<MapEntry<String, double>, String>(
             radius: '100%',
-            innerRadius: '80%',
+            innerRadius: '85%',
             dataSource: _getChartData(radialChartData),
             xValueMapper: (MapEntry<String, double> data, _) => data.key,
             yValueMapper: (MapEntry<String, double> data, _) => data.value,

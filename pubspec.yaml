@@ -85,3 +85,57 @@ flutter:
           weight: 400
         - asset: assets/fonts/AtHaussAero-Medium.ttf
           weight: 500
+    - family: AtHaussStdTRIAL
+      fonts:
+        - asset: assets/fonts/AtHaussStdTRIAL-RetinaItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Air.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Regular.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Semibold.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-SemiboldItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-MediumItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Super.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Black.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-RegularItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Light.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Medium.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-AirItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-BlackItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-BoldItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Thin.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-ThinItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-LightItalic.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Retina.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-Bold.otf
+        - asset: assets/fonts/AtHaussStdTRIAL-SuperItalic.otf
+    - family: AtSlamCndTRIAL
+      fonts:
+        - asset: assets/fonts/AtSlamCndTRIAL-Semibold.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-BlackSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-MediumSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-BoldSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-SuperBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-ThinBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Light.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-RegularSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-RetinaSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-BoldBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Thin.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Regular.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Bold.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-RegularBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-ThinSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-RetinaBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-MediumBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-LightBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Medium.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-LightSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-AirBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-BlackBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-SuperSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-SemiboldSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Super.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-AirSlanted.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Retina.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-SemiboldBackslant.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Black.otf
+        - asset: assets/fonts/AtSlamCndTRIAL-Air.otf
