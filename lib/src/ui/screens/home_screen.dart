@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/providers/credit_card_factor_provider.dart';
+import 'package:meetava_pro/src/ui/widgets/account_details_widget.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_factor_card.dart';
 import 'package:meetava_pro/src/ui/widgets/base_header.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_score_widget.dart';
@@ -17,7 +18,6 @@ class MeetAvaHome extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-          //shape: ROUNDED_RECTANGLE_BORDER,
           leading: IconButton(
               onPressed: () {
                 // To do implement the route here
@@ -51,6 +51,7 @@ class MeetAvaHome extends ConsumerWidget {
             ),
           ),
           const SectionHeader(title: 'Account details'),
+          const AccountDetailsWidget(),
           const SectionHeader(title: 'Open credit card accounts'),
         ],
       )),

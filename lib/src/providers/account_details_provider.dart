@@ -8,9 +8,16 @@ class AccountDetailsNotifier extends _$AccountDetailsNotifier {
   @override
   AccountDetailModel build() {
     return AccountDetailModel(
-        spentAmount: 0.0,
+        spentAmount: 75.0,
         spendLimit: 0.0,
         outStandingBalance: 0.0,
         creditLimit: 0.0);
+  }
+
+  int get utilizationPercentage =>
+      ((state.spentAmount / state.creditLimit) * 100).toInt();
+
+  void updateSpentAmount(double value) {
+    state = state.copyWith(spentAmount: value);
   }
 }
