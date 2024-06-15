@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/providers/credit_card_factor_provider.dart';
 import 'package:meetava_pro/src/ui/widgets/account_details_widget.dart';
+import 'package:meetava_pro/src/ui/widgets/credit_card_utilization.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_factor_card.dart';
 import 'package:meetava_pro/src/ui/widgets/base_header.dart';
 import 'package:meetava_pro/src/ui/widgets/credit_score_widget.dart';
@@ -36,6 +37,7 @@ class MeetAvaHome extends ConsumerWidget {
           child: Column(
         children: [
           const BaseHeaderWidget(),
+          const CreditCardUtilization(),
           const SectionHeader(title: 'Chart'),
           const CreditScoreWidget(
             atBaseHeader: false,
