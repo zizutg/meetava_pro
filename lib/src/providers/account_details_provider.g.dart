@@ -7,7 +7,7 @@ part of 'account_details_provider.dart';
 // **************************************************************************
 
 String _$accountDetailsNotifierHash() =>
-    r'b6cab93930ba8b22cb13e0eae5529a232d146656';
+    r'f8b7183f24084bf71f9fc2916a6302962dd8560f';
 
 /// See also [AccountDetailsNotifier].
 @ProviderFor(AccountDetailsNotifier)
