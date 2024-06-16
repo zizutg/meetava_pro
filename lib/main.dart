@@ -4,7 +4,6 @@ import 'package:meetava_pro/src/ui/screens/employment_display_screen.dart';
 import 'package:meetava_pro/src/ui/screens/employment_edit_screen.dart';
 import 'package:meetava_pro/src/ui/screens/home_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meetava_pro/src/util/color_palette.dart';
 
 void main() {
   runApp(ProviderScope(child: MeetAvaApp()));

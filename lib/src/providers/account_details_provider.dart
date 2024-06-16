@@ -14,9 +14,6 @@ class AccountDetailsNotifier extends _$AccountDetailsNotifier {
         creditLimit: 600.0);
   }
 
-  int get utilizationPercentage =>
-      ((state.outStandingBalance / state.creditLimit) * 100).toInt();
-
   void updateSpentAmount(double value) {
     state = state.copyWith(spentAmount: value);
   }

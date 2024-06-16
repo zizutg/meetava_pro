@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meetava_pro/src/util/math_util.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../models/doughnut_series_model.dart';
 import '../../util/constants.dart';
 import '../../util/color_palette.dart';
 
 class DoughnutSeriesWidget extends ConsumerWidget {
-  const DoughnutSeriesWidget(
-      {super.key, required this.seriesModel});
+  const DoughnutSeriesWidget({super.key, required this.seriesModel});
 
   final DoughnutSeriesModel seriesModel;
 
@@ -45,11 +45,12 @@ class DoughnutSeriesWidget extends ConsumerWidget {
           DoughnutSeries<MapEntry<String, double>, String>(
             radius: '100%',
             innerRadius: '85%',
-            dataSource: _getChartData(seriesModel.seriesData, seriesModel.minValue, seriesModel.maxValue),
+            dataSource: _getChartData(
+                seriesModel.seriesData.values.first, seriesModel.maxValue),
             xValueMapper: (MapEntry<String, double> data, _) => data.key,
             yValueMapper: (MapEntry<String, double> data, _) => data.value,
-            startAngle: 180, // Starts at 270 degrees
-            endAngle: 180 + 360,
+            startAngle: seriesModel.startAngle, // Starts at 270 degrees
+            endAngle: seriesModel.endAngle,
             // Adding a color to the points
             pointColorMapper: (MapEntry<String, double> data, _) =>
                 data.key == 'Current' ? Palette.medGreen : Palette.lightGreen,
@@ -59,11 +60,9 @@ class DoughnutSeriesWidget extends ConsumerWidget {
     );
   }
 
-  // Generate chart data and compute the percentage
-  List<MapEntry<String, double>> _getChartData(Map<String, int> dataMap, int minValue, int maxValue) {
-    int actualValue = dataMap.values.first;
-    double percentage = ((actualValue - minValue) / (maxValue - minValue)) * 100;
-    // Constructing data for filled and unfilled portions of the doughnut
+  // Get the percentage and generate the chart entry
+  List<MapEntry<String, double>> _getChartData(int actualValue, int maxValue) {
+    double percentage = MathUtils.calculatePercentage(actualValue, maxValue);
     return [
       MapEntry('Current', percentage),
       MapEntry('Remaining', 100 - percentage),

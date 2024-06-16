@@ -9,31 +9,28 @@ class CreditScoreNotifier extends _$CreditScoreNotifier {
   @override
   CreditScoreModel build() {
     return CreditScoreModel(
-        header: 'Credit Score',
-        subHeader: 'Updated Today · Next May 12',
-        points: '+2pts',
-        monthlyScores: List.generate(12, (_) => 300 + Random().nextInt(551)),
-        dataSource: 'Experian',
+      header: 'Credit Score',
+      subHeader: 'Updated Today · Next May 12',
+      points: '+2pts',
+      monthlyScores: List.generate(12, (_) => 300 + Random().nextInt(551)),
+      dataSource: 'Experian',
     );
   }
 
+  int get currentScore => state.monthlyScores.last;
 
-  Map<String, int> getDescriptionAndScore() {
-    int score = state.monthlyScores.last;
-    String description = '';
-
-    if (score >= 781) {
-      description = 'Excellent';
-    } else if (score >= 661) {
-      description = 'Good';
-    } else if (score >= 601) {
-      description = 'Fair';
-    } else if (score >= 500) {
-      description = 'Poor';
+  String get category {
+    if (currentScore >= 781) {
+      return 'Excellent';
+    } else if (currentScore >= 661) {
+      return 'Good';
+    } else if (currentScore >= 601) {
+      return 'Fair';
+    } else if (currentScore >= 500) {
+      return 'Poor';
     } else {
-      description = 'Very Poor';
+      return 'Very Poor';
     }
-
-    return {description: score};
   }
+  
 }

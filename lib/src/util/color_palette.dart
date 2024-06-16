@@ -12,7 +12,7 @@ class Palette {
   static const Color medGreen = Color(0xFF48A388);
   static const Color lightGreen = Color(0xFFA9EACE);
   static const Color lightRed = Color(0xFFFF9A98);
-  static const Color lightYellow = Color(0xFFFEFEC1);
+  static const Color lightYellow = Color(0xFFFDDCA0);
 
   static const Color white = Color(0xFFFFFFFF);
 }

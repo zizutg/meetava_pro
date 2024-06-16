@@ -20,7 +20,9 @@ class CreditScoreWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final creditScoreData = ref.watch(creditScoreNotifierProvider);
     final creditScoreNotifier = ref.read(creditScoreNotifierProvider.notifier);
-
+    final seriesData = {
+      creditScoreNotifier.category: creditScoreNotifier.currentScore
+    };
     return WhiteRoundedConstainer(
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,9 +74,7 @@ class CreditScoreWidget extends ConsumerWidget {
             if (atBaseHeader)
               DoughnutSeriesWidget(
                 seriesModel: DoughnutSeriesModel(
-                    seriesData: creditScoreNotifier.getDescriptionAndScore(),
-                    minValue: 300,
-                    maxValue: 850),
+                    seriesData: seriesData, minValue: 300, maxValue: 850),
               ),
           ],
         ),

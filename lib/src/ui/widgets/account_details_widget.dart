@@ -5,6 +5,7 @@ import 'package:meetava_pro/src/providers/account_details_provider.dart';
 import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
 import 'package:meetava_pro/src/util/constants.dart';
+import 'package:meetava_pro/src/util/math_util.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
@@ -16,7 +17,10 @@ class AccountDetailsWidget extends ConsumerWidget {
     final accountDetailsProvider = ref.watch(accountDetailsNotifierProvider);
     final accountDetailsNotifier =
         ref.read(accountDetailsNotifierProvider.notifier);
-    final utilization = accountDetailsNotifier.utilizationPercentage;
+
+    final utilizationPercentage = MathUtils.calculatePercentage(
+        accountDetailsProvider.outStandingBalance.toInt(),
+        accountDetailsProvider.creditLimit.toInt());
 
     return WhiteRoundedConstainer(
         child: Column(
@@ -33,7 +37,7 @@ class AccountDetailsWidget extends ConsumerWidget {
         AppGaps.vSmallGap,
         const Divider(),
         // TO-DO Utilization goes here
-        _utilization(utilization)
+        _utilization(utilizationPercentage.toInt())
       ],
     ));
   }

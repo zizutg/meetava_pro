@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
+import 'package:meetava_pro/src/util/constants.dart';
 
 class WhiteRoundedConstainer extends StatelessWidget {
   const WhiteRoundedConstainer({super.key, required this.child});
@@ -9,8 +10,9 @@ class WhiteRoundedConstainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: AppPadding.allMedium,
       child: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
             border: Border.all(
               color:
@@ -18,9 +20,9 @@ class WhiteRoundedConstainer extends StatelessWidget {
               width: 1, // Width of the border
             ),
             color: Palette.white,
-            borderRadius: BorderRadius.circular(16)),
+            borderRadius: AppBorderRadius.large),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: AppPadding.allMedium,
           child: child,
         ),
       ),

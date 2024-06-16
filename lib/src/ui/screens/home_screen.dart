@@ -37,7 +37,6 @@ class MeetAvaHome extends ConsumerWidget {
           child: Column(
         children: [
           const BaseHeaderWidget(),
-          const CreditCardUtilization(),
           const SectionHeader(title: 'Chart'),
           const CreditScoreWidget(
             atBaseHeader: false,
@@ -54,6 +53,7 @@ class MeetAvaHome extends ConsumerWidget {
           ),
           const SectionHeader(title: 'Account details'),
           const AccountDetailsWidget(),
+          const CreditCardUtilization(),
           const SectionHeader(title: 'Open credit card accounts'),
         ],
       )),

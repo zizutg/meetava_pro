@@ -19,7 +19,10 @@ dependencies:
   riverpod_annotation: ^2.3.5
   syncfusion_flutter_charts: ^26.1.35
   syncfusion_flutter_sliders: ^26.1.35
+  syncfusion_flutter_gauges: ^26.1.35
 
+  syncfusion_flutter_core: any
+  intl: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

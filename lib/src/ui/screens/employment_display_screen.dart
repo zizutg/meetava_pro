@@ -15,7 +15,7 @@ class EmploymentDisplayScreen extends ConsumerWidget {
       body: Center(
         child: ElevatedButton(
             onPressed: () => GoRouter.of(context).push('/emp_edit'),
-            child: Text('Edit')),
+            child: const Text('Edit')),
       ),
     );
   }
