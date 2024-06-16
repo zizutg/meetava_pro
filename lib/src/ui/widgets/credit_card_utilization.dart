@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/providers/credit_utilization_provider.dart';
 import 'package:meetava_pro/src/ui/widgets/doughnut_series_widget.dart';
@@ -60,7 +59,7 @@ class CreditCardUtilization extends ConsumerWidget {
             ),
           ],
         ),
-        // TODO Leaniar guge goes here
+        
         AppGaps.vSmallGap,
         
         _buildGaugeWithLabels(rate),
@@ -187,35 +186,35 @@ class CreditCardUtilization extends ConsumerWidget {
 
   List<LinearShapePointer> _buildMarkerPointers() {
     return [
-      LinearShapePointer(
+      const LinearShapePointer(
         value: 1,
         shapeType: LinearShapePointerType.rectangle,
         width: 1,
         offset: 5,
         position: LinearElementPosition.inside,
       ),
-      LinearShapePointer(
+      const LinearShapePointer(
         value: 30,
         shapeType: LinearShapePointerType.rectangle,
         width: 1,
         offset: 5,
         position: LinearElementPosition.inside,
       ),
-      LinearShapePointer(
+      const LinearShapePointer(
         value: 45,
         shapeType: LinearShapePointerType.rectangle,
         width: 1,
         offset: 5,
         position: LinearElementPosition.inside,
       ),
-      LinearShapePointer(
+      const LinearShapePointer(
         value: 60,
         shapeType: LinearShapePointerType.rectangle,
         width: 1,
         offset: 5,
         position: LinearElementPosition.inside,
       ),
-      LinearShapePointer(
+      const LinearShapePointer(
         value: 89,
         shapeType: LinearShapePointerType.rectangle,
         width: 1,
