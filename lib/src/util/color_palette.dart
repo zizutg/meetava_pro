@@ -14,5 +14,7 @@ class Palette {
   static const Color lightRed = Color(0xFFFF9A98);
   static const Color lightYellow = Color(0xFFFDDCA0);
 
+  static const Color grey = Colors.grey;
+
   static const Color white = Color(0xFFFFFFFF);
 }
