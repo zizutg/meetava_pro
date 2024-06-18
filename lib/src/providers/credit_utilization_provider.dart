@@ -10,7 +10,7 @@ class CreditUtilizationNotifier extends _$CreditUtilizationNotifier {
   @override
   CreditCardUtilizationModel build() {
     return CreditCardUtilizationModel(
-      totalBalance: 150000,
+      totalBalance: 10000,
       totalLimit: 200900,
     );
   }
@@ -74,7 +74,7 @@ class CreditUtilizationNotifier extends _$CreditUtilizationNotifier {
       return 60.0;
     }
   }
-  
+
   Map<String, List<double>> labelMap = {
     '0-9%': [0, 30],
     '10-29%': [0, 30],

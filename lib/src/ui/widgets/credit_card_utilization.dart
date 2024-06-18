@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/providers/credit_utilization_provider.dart';
-import 'package:meetava_pro/src/ui/widgets/doughnut_series_widget.dart';
-import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
-import 'package:meetava_pro/src/util/color_palette.dart';
-import 'package:meetava_pro/src/util/constants.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
-import '../../models/doughnut_series_model.dart';
+import '../../src.dart';
 import 'package:intl/intl.dart';
 
 class CreditCardUtilization extends ConsumerWidget {
@@ -31,7 +26,12 @@ class CreditCardUtilization extends ConsumerWidget {
             const Expanded(child: AppGaps.hSmallGap),
             DoughnutSeriesWidget(
               seriesModel: DoughnutSeriesModel(
-                  seriesData: seriesData, startAngle: 0, endAngle: 360),
+                  seriesData: seriesData,
+                  startAngle: 0,
+                  endAngle: 360,
+                  currentColor: creditCardUtilizationNotifier.color,
+                  remainingColor:
+                      creditCardUtilizationNotifier.color.withOpacity(0.25)),
             ),
           ],
         ),

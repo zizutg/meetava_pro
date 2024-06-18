@@ -33,5 +33,7 @@ class CreditScoreNotifier extends _$CreditScoreNotifier {
       return 'Very Poor';
     }
   }
+
+  
   
 }

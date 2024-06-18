@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../src.dart';
+
 class DoughnutSeriesWidget extends ConsumerWidget {
   const DoughnutSeriesWidget({super.key, required this.seriesModel});
 
@@ -45,18 +46,18 @@ class DoughnutSeriesWidget extends ConsumerWidget {
                 seriesModel.seriesData.values.first, seriesModel.maxValue),
             xValueMapper: (MapEntry<String, double> data, _) => data.key,
             yValueMapper: (MapEntry<String, double> data, _) => data.value,
-            startAngle: seriesModel.startAngle, // Starts at 270 degrees
+            startAngle: seriesModel.startAngle,
             endAngle: seriesModel.endAngle,
-            // Adding a color to the points
             pointColorMapper: (MapEntry<String, double> data, _) =>
-                data.key == 'Current' ? Palette.medGreen : Palette.lightGreen,
+                data.key == 'Current'
+                    ? seriesModel.currentColor
+                    : seriesModel.remainingColor,
           ),
         ],
       ),
     );
   }
 
-  // Get the percentage and generate the chart entry
   List<MapEntry<String, double>> _getChartData(int actualValue, int maxValue) {
     double percentage = MathUtils.calculatePercentage(actualValue, maxValue);
     return [
