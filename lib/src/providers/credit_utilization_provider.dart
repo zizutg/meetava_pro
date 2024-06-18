@@ -14,14 +14,14 @@ class CreditUtilizationNotifier extends _$CreditUtilizationNotifier {
     );
   }
 
-  int get utilizationRate =>
+  int get rate =>
       MathUtils.calculatePercentage(state.totalBalance, state.totalLimit)
           .toInt();
 
   String get category {
-    if (utilizationRate <= 29) {
+    if (rate <= 29) {
       return 'Excellent';
-    } else if (utilizationRate <= 50) {
+    } else if (rate <= 50) {
       return 'Good';
     } else {
       return 'Poor';

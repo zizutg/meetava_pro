@@ -7,7 +7,7 @@ part of 'credit_utilization_provider.dart';
 // **************************************************************************
 
 String _$creditUtilizationNotifierHash() =>
-    r'b98209d22d5f611499512d1f715a2db426afeae3';
+    r'242f7cf30dfd08b95ddbdd137418d6c2eea6ca33';
 
 /// See also [CreditUtilizationNotifier].
 @ProviderFor(CreditUtilizationNotifier)

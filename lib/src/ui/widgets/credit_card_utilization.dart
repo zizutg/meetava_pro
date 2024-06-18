@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/providers/credit_utilization_provider.dart';
+import 'package:meetava_pro/src/providers/linear_shape_pointer_provider.dart';
 import 'package:meetava_pro/src/ui/widgets/doughnut_series_widget.dart';
 import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
 import 'package:meetava_pro/src/util/constants.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '../../models/doughnut_series_model.dart';
 import 'package:intl/intl.dart';
@@ -14,17 +16,14 @@ class CreditCardUtilization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final creditCardUtilizationProvider =
-        ref.watch(creditUtilizationNotifierProvider);
+    ref.watch(creditUtilizationNotifierProvider);
     final creditCardUtilizationNotifier =
         ref.read(creditUtilizationNotifierProvider.notifier);
     final seriesData = {
-      creditCardUtilizationNotifier.category:
-          creditCardUtilizationNotifier.utilizationRate
+      creditCardUtilizationNotifier.category: creditCardUtilizationNotifier.rate
     };
-    final totalBalance = creditCardUtilizationProvider.totalBalance;
-    final totalLimit = creditCardUtilizationProvider.totalLimit;
-    final rate = creditCardUtilizationNotifier.utilizationRate;
+
+    final rate = creditCardUtilizationNotifier.rate;
 
     return WhiteRoundedConstainer(
         child: Column(
@@ -32,26 +31,7 @@ class CreditCardUtilization extends ConsumerWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                text: 'Total balance: ',
-                style: AppTextStyles.headlineMedium
-                    .copyWith(color: Palette.darkPurple),
-              ),
-              TextSpan(
-                text: '${NumberFormat('\$#,##0').format(totalBalance)}\n',
-                style: AppTextStyles.headlineMedium.copyWith(
-                  color: Palette.medGreen,
-                ),
-              ),
-              TextSpan(
-                text:
-                    'Total limit: ${NumberFormat('\$#,##0').format(totalLimit)}\n',
-                style: AppTextStyles.titleLarge
-                    .copyWith(color: Palette.lightPurple, height: 2),
-              )
-            ])),
+            _utilizationHeader(ref),
             const Expanded(child: AppGaps.hSmallGap),
             DoughnutSeriesWidget(
               seriesModel: DoughnutSeriesModel(
@@ -59,14 +39,275 @@ class CreditCardUtilization extends ConsumerWidget {
             ),
           ],
         ),
-        
         AppGaps.vSmallGap,
-        
-        _buildGaugeWithLabels(rate),
+        SfLinearGauge(
+            minimum: 0,
+            maximum: 90,
+            showAxisTrack: false,
+            showTicks: false,
+            showLabels: false,
+            ranges: [
+              LinearGaugeRange(
+                  edgeStyle: LinearEdgeStyle.startCurve,
+                  startWidth: AppSizes.spaceXL,
+                  endWidth: AppSizes.spaceXL,
+                  startValue: 0,
+                  endValue: 30,
+                  color: Colors.transparent,
+                  position: LinearElementPosition.outside,
+                  child: rate <= 29
+                      ? Center(
+                          child: Text(
+                            'Excellent',
+                            style: AppTextStyles.bodyLarge.copyWith(
+                                color: Palette.medGreen,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      : Container()),
+              LinearGaugeRange(
+                  startWidth: AppSizes.spaceXL,
+                  endWidth: AppSizes.spaceXL,
+                  startValue: 30,
+                  endValue: 60,
+                  color: Colors.transparent,
+                  position: LinearElementPosition.outside,
+                  child: rate > 29 && rate <= 49
+                      ? Center(
+                          child: Text(
+                            'Good',
+                            style: AppTextStyles.bodyLarge.copyWith(
+                                color: Palette.lightYellow,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      : Container()),
+              LinearGaugeRange(
+                  startWidth: AppSizes.spaceXL,
+                  endWidth: AppSizes.spaceXL,
+                  startValue: 60,
+                  endValue: 90,
+                  color: Colors.transparent,
+                  position: LinearElementPosition.outside,
+                  child: rate > 49 && rate <= 75
+                      ? Center(
+                          child: Text(
+                            'Poor',
+                            style: AppTextStyles.bodyLarge.copyWith(
+                                color: Palette.lightRed,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      : Container())
+            ]),
+        SfLinearGauge(
+          minimum: 0,
+          maximum: 90,
+          showAxisTrack: false,
+          showTicks: false,
+          showLabels: false,
+          ranges: const [
+            LinearGaugeRange(
+              edgeStyle: LinearEdgeStyle.startCurve,
+              startWidth: AppSizes.spaceXL,
+              endWidth: AppSizes.spaceXL,
+              startValue: 0,
+              endValue: 30,
+              color: Palette.medGreen,
+              position: LinearElementPosition.outside,
+            ),
+            LinearGaugeRange(
+              startWidth: AppSizes.spaceXL,
+              endWidth: AppSizes.spaceXL,
+              startValue: 30,
+              endValue: 60,
+              color: Palette.lightYellow,
+              position: LinearElementPosition.outside,
+            ),
+            LinearGaugeRange(
+              edgeStyle: LinearEdgeStyle.endCurve,
+              startWidth: AppSizes.spaceXL,
+              endWidth: AppSizes.spaceXL,
+              startValue: 60,
+              endValue: 90,
+              color: Palette.lightRed,
+              position: LinearElementPosition.outside,
+            )
+          ],
+          markerPointers: _generateMarkerPointers(ref),
+        ),
+        SfLinearGauge(
+          minimum: 0,
+          maximum: 90,
+          showAxisTrack: false,
+          showTicks: false,
+          showLabels: false,
+          ranges: [
+            LinearGaugeRange(
+              edgeStyle: LinearEdgeStyle.startCurve,
+              startWidth: AppSizes.spaceXL,
+              endWidth: AppSizes.spaceXL,
+              startValue: 0,
+              endValue: 30,
+              color: Colors.transparent,
+              position: LinearElementPosition.outside,
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '0-9%',
+                      style: AppTextStyles.bodyLarge.copyWith(
+                          color: rate <= 9
+                              ? Palette.medGreen
+                              : Palette.lightPurple,
+                          fontWeight:
+                              rate <= 9 ? FontWeight.bold : FontWeight.normal),
+                    ),
+                  ),
+                  const Expanded(child: AppGaps.hHugeGap),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      '10-29%',
+                      style: AppTextStyles.bodyLarge.copyWith(
+                          color: rate > 9 && rate <= 29
+                              ? Palette.medGreen
+                              : Palette.lightPurple,
+                          fontWeight: rate > 9 && rate <= 29
+                              ? FontWeight.bold
+                              : FontWeight.normal),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            LinearGaugeRange(
+              startWidth: AppSizes.spaceXL,
+              endWidth: AppSizes.spaceXL,
+              startValue: 30,
+              endValue: 60,
+              color: Colors.transparent,
+              position: LinearElementPosition.outside,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  '30-49%',
+                  style: AppTextStyles.bodyLarge.copyWith(
+                      color: rate > 29 && rate <= 49
+                          ? Palette.lightYellow
+                          : Palette.lightPurple,
+                      fontWeight: rate > 29 && rate <= 49
+                          ? FontWeight.bold
+                          : FontWeight.normal),
+                ),
+              ),
+            ),
+            LinearGaugeRange(
+              startWidth: AppSizes.spaceXL,
+              endWidth: AppSizes.spaceXL,
+              startValue: 60,
+              endValue: 90,
+              color: Colors.transparent,
+              position: LinearElementPosition.outside,
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '50-74%',
+                      style: AppTextStyles.bodyLarge.copyWith(
+                          color: rate > 49 && rate <= 74
+                              ? Palette.lightRed
+                              : Palette.lightPurple,
+                          fontWeight: rate > 49 && rate <= 74
+                              ? FontWeight.bold
+                              : FontWeight.normal),
+                    ),
+                  ),
+                  Expanded(child: AppGaps.hHugeGap),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      '<74%',
+                      style: AppTextStyles.bodyLarge.copyWith(
+                          color: rate > 74
+                              ? Palette.lightRed
+                              : Palette.lightPurple,
+                          fontWeight:
+                              rate > 74 ? FontWeight.bold : FontWeight.normal),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        )
+
+        /* _buildGaugeWithLabels(rate),
         _buildColoredGauge(),
-        _buildPercentageLabels(rate),
+        _buildPercentageLabels(rate), */
       ],
     ));
+  }
+
+  List<LinearGaugeRange> test(){
+    return [];
+  }
+
+  List<LinearShapePointer> _generateMarkerPointers(WidgetRef ref) {
+    final linearShapePointerProvider =
+        ref.watch(linearShapePointerNotifierProvider);
+    final linearShapePointerNotifier =
+        ref.read(linearShapePointerNotifierProvider.notifier);
+
+    return linearShapePointerProvider
+        .map((data) => LinearShapePointer(
+              value: data.value.toDouble(),
+              height: AppSizes.spaceSmall,
+              shapeType: LinearShapePointerType.rectangle,
+              width: 1,
+              offset: AppSizes.spaceXS,
+              color: linearShapePointerNotifier.getColor(data.value,
+                  ref), //rate <= 9 ? Palette.medGreen : Palette.lightPurple,
+              position: LinearElementPosition.inside,
+            ))
+        .toList();
+  }
+
+  Widget _utilizationHeader(WidgetRef ref) {
+    final creditCardUtilizationProvider =
+        ref.watch(creditUtilizationNotifierProvider);
+    ref.read(creditUtilizationNotifierProvider.notifier);
+    final totalBalance = creditCardUtilizationProvider.totalBalance;
+    final totalLimit = creditCardUtilizationProvider.totalLimit;
+
+    return RichText(
+      text: TextSpan(
+        children: [
+          _buildTextSpan(
+            'Total balance: ',
+            AppTextStyles.headlineMedium.copyWith(color: Palette.darkPurple),
+          ),
+          _buildTextSpan(
+            '${NumberFormat('\$#,##0').format(totalBalance)}\n',
+            AppTextStyles.headlineMedium.copyWith(color: Palette.medGreen),
+          ),
+          _buildTextSpan(
+            'Total limit: ${NumberFormat('\$#,##0').format(totalLimit)}\n',
+            AppTextStyles.titleLarge
+                .copyWith(color: Palette.lightPurple, height: 2),
+          ),
+        ],
+      ),
+    );
+  }
+
+  TextSpan _buildTextSpan(String text, TextStyle style) {
+    return TextSpan(
+      text: text,
+      style: style,
+    );
   }
 
   SfLinearGauge _buildGaugeWithLabels(int rate) {
