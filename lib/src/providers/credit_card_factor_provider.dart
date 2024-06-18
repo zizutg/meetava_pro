@@ -1,9 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../models/credit_card_factor_model.dart';
 import 'package:flutter/material.dart';
-import '../util/color_palette.dart';
-
+import '../src.dart';
 part 'credit_card_factor_provider.g.dart';
+
+
 
 @riverpod
 class CreditCardFactorNotifier extends _$CreditCardFactorNotifier {

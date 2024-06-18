@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../models/account_detail_model.dart';
+import '../src.dart';
 
 part 'account_details_provider.g.dart';
 

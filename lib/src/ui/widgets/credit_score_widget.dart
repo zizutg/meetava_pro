@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/models/doughnut_series_model.dart';
-import 'package:meetava_pro/src/providers/credit_score_provider.dart';
-import 'package:meetava_pro/src/ui/widgets/doughnut_series_widget.dart';
-import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
-import 'package:meetava_pro/src/util/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import '../../util/color_palette.dart';
-
+import '../../src.dart';
 class CreditScoreWidget extends ConsumerWidget {
   const CreditScoreWidget({
     super.key,

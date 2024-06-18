@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/models/account_detail_model.dart';
-import 'package:meetava_pro/src/providers/account_details_provider.dart';
-import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
-import 'package:meetava_pro/src/util/color_palette.dart';
-import 'package:meetava_pro/src/util/constants.dart';
-import 'package:meetava_pro/src/util/math_util.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
-
+import '../../src.dart';
 class AccountDetailsWidget extends ConsumerWidget {
   const AccountDetailsWidget({super.key});
 

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/util/math_util.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import '../../models/doughnut_series_model.dart';
-import '../../util/constants.dart';
-import '../../util/color_palette.dart';
-
+import '../../src.dart';
 class DoughnutSeriesWidget extends ConsumerWidget {
   const DoughnutSeriesWidget({super.key, required this.seriesModel});
 

@@ -1,6 +1,7 @@
-import '../models/credit_score_model.dart';
+import '../src.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'dart:math';
+
 
 part 'credit_score_provider.g.dart';
 

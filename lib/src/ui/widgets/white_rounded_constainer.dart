@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meetava_pro/src/util/color_palette.dart';
-import 'package:meetava_pro/src/util/constants.dart';
-
+import '../../src.dart';
 class WhiteRoundedConstainer extends StatelessWidget {
   const WhiteRoundedConstainer({super.key, required this.child});
 

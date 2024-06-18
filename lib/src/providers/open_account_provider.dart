@@ -1,6 +1,5 @@
-import 'package:meetava_pro/src/models/open_account.dart';
-import 'package:meetava_pro/src/util/math_util.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../src.dart';
 part 'open_account_provider.g.dart';
 
 @riverpod

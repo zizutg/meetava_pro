@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/util/constants.dart';
-
+import '../../src.dart';
 class SectionHeader extends ConsumerWidget {
   const SectionHeader({super.key, required this.title});
 

@@ -1,13 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:meetava_pro/src/providers/open_account_provider.dart';
-import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
-import 'package:meetava_pro/src/util/color_palette.dart';
-import 'package:meetava_pro/src/util/constants.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-
+import '../../src.dart';
 class OpenAccountsWidget extends ConsumerWidget {
   const OpenAccountsWidget({super.key});
 

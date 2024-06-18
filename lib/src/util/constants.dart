@@ -97,6 +97,7 @@ class AppGaps {
 }
 
 class AppSizes {
+  static const double spaceXXS = 2.0;
   static const double spaceXS = 4.0;
   static const double spaceSmall = 8.0;
   static const double spaceMedium = 16.0;

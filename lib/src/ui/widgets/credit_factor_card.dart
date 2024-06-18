@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/models/credit_card_factor_model.dart';
-import 'package:meetava_pro/src/providers/credit_card_factor_provider.dart';
-import 'package:meetava_pro/src/util/color_palette.dart';
-import 'package:meetava_pro/src/util/constants.dart';
-
+import '../../src.dart';
 class CreditFactorCard extends ConsumerWidget {
   const CreditFactorCard({super.key, required this.creditFactorModel});
 

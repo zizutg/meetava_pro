@@ -1,4 +1,3 @@
-import 'package:meetava_pro/src/util/math_util.dart';
 
 class OpenAccountModel {
   final String accountName;
