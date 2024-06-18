@@ -6,7 +6,6 @@ import 'package:meetava_pro/src/ui/widgets/doughnut_series_widget.dart';
 import 'package:meetava_pro/src/ui/widgets/white_rounded_constainer.dart';
 import 'package:meetava_pro/src/util/color_palette.dart';
 import 'package:meetava_pro/src/util/constants.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '../../models/doughnut_series_model.dart';
 import 'package:intl/intl.dart';
