@@ -1,15 +1,15 @@
-
-
 export 'models/account_detail_model.dart';
 export 'models/credit_card_factor_model.dart';
 export 'models/credit_card_utilization_model.dart';
 export 'models/credit_score_model.dart';
 export 'models/doughnut_series_model.dart';
+export 'models/employment_model.dart';
 export 'models/open_account.dart';
 export 'providers/account_details_provider.dart';
 export 'providers/credit_card_factor_provider.dart';
 export 'providers/credit_score_provider.dart';
 export 'providers/credit_utilization_provider.dart';
+export 'providers/employment_provider.dart';
 export 'providers/open_account_provider.dart';
 export 'scripts/get_file_names.dart';
 export 'ui/screens/dialog/feed_back_dialog.dart';
