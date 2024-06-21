@@ -15,7 +15,7 @@ class EmploymentNotifier extends _$EmploymentNotifier {
       payFrequency: 'Bi-weekly',
       employerAddress: '1234 Elm Street, Springfield, ILw',
       timeWithEmployer: 30,
-      nextPayDay: DateTime.now().add(const Duration(days: 14)),
+      nextPayDay: DateTime.now(),
       directDeposit: DirectDeposit.Yes,
     );
   }
@@ -94,6 +94,9 @@ class EmploymentNotifier extends _$EmploymentNotifier {
     }
   }
 
+  List<String> get payFrequencyItems => ['Weekly', 'Bi-weekly', 'Monthly'];
+  List<String> get employmentTypeItems =>
+      ['Full-time', 'Part-time', 'Temporary', 'Apprenticeship', 'Freelance'];
   void updateEmploymentType(String employmentType) {
     state = state.copyWith(employmentType: employmentType);
   }

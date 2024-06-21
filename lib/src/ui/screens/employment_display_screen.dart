@@ -52,7 +52,7 @@ class EmploymentDisplayScreen extends ConsumerWidget {
           ),
           const Spacer(),
           ElevatedTextButton(
-              model: ElevetedTextButtonModel(
+              buttonData: ElevetedTextButtonModel(
             text: 'Edit',
             onPressed: () => GoRouter.of(context).push('/emp_edit'),
             backgroundColor: Palette.lightGrey,
@@ -63,7 +63,7 @@ class EmploymentDisplayScreen extends ConsumerWidget {
           )),
           AppGaps.vSmallGap,
           ElevatedTextButton(
-              model: ElevetedTextButtonModel(
+              buttonData: ElevetedTextButtonModel(
             text: 'Confirm',
             onPressed: () {
               // Handle button press

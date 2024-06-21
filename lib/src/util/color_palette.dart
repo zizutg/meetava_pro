@@ -6,8 +6,8 @@ class Palette {
   static const Color deepPurple = Color(0xFF420085);
   static const Color medPurple = Color(0xFFA448FF);
   static const Color lightPurple = Color(0xFF736B7C);
-  static const Color lightGrey =Color(0xFFEEEEEE);
-
+  static const Color lightGrey = Color(0xFFEEEEEE);
+  static const Color lightGreyShade = Color(0xFFFD8D5D9);
   static const Color darkGreen = Color(0xFF003928);
   static const Color medGreen = Color(0xFF48A388);
   static const Color lightGreen = Color(0xFFA9EACE);

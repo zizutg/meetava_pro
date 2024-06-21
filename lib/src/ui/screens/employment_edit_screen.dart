@@ -14,7 +14,8 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final employment = ref.watch(employmentNotifierProvider);
+    final employmentProvider = ref.watch(employmentNotifierProvider);
+    final employmentNotifier = ref.read(employmentNotifierProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -29,117 +30,108 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
       body: Form(
         key: _formKey,
         child: ListView(
+          shrinkWrap: true,
           padding: AppPadding.horizontalMedium,
           children: [
             Text('Edit employment information',
                 style: AppTextStyles.displayLarge
                     .copyWith(fontSize: 40, fontFamily: 'AtSlamCndTRIAL')),
             AppGaps.vMedGap,
-            /* Text('Employment Type', style: AppTextStyles.titleSmall),
+            _labelText(text: 'Employment Type'),
             _buildDropdownField(
-              value: employment.employmentType,
-              items: [
-                'Full-time',
-                'Part-time',
-                'Temporary',
-                'Apprenticeship',
-                'Freelance'
-              ],
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
-                  .updateEmploymentType(value!),
-            ), */
-
-            Text('Employment type',
-                style: AppTextStyles.bodyLarge.copyWith(
-                    fontWeight: FontWeight.bold, color: Palette.darkPurple)),
-            _buildTextField(
-              initialValue: employment.employer,
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
-                  .updateEmployer(value),
+              value: employmentProvider.employmentType,
+              items: employmentNotifier.employmentTypeItems,
+              onChanged: (value) =>
+                  employmentNotifier.updateEmploymentType(value!),
             ),
-            /* Text('Job Title', style: AppTextStyles.titleSmall),
+            _labelText(text: 'Employer'),
             _buildTextField(
-              initialValue: employment.jobTitle,
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
-                  .updateJobTitle(value),
+              initialValue: employmentProvider.employer,
+              onChanged: (value) => employmentNotifier.updateEmployer(value),
             ),
-            Text('Gross Annual Income', style: AppTextStyles.titleSmall),
+            _labelText(text: 'Job title'),
             _buildTextField(
-              initialValue: employment.grossAnnualIncome.toString(),
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
+              initialValue: employmentProvider.jobTitle,
+              onChanged: (value) => employmentNotifier..updateJobTitle(value),
+            ),
+            _labelText(text: 'Gross annual income'),
+            _buildTextField(
+              initialValue: employmentProvider.grossAnnualIncome.toString(),
+              onChanged: (value) => employmentNotifier
                   .updateGrossAnnualIncome(double.parse(value)),
               keyboardType: TextInputType.number,
             ),
-            Text('Pay Frequency', style: AppTextStyles.titleSmall),
+            _labelText(text: 'Pay frequency'),
             _buildDropdownField(
-              value: employment.payFrequency,
-              items: ['Weekly', 'Bi-weekly', 'Monthly'],
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
-                  .updatePayFrequency(value!),
+              value: employmentProvider.payFrequency,
+              items: employmentNotifier.payFrequencyItems,
+              onChanged: (value) =>
+                  employmentNotifier.updatePayFrequency(value!),
             ),
-            Text('Employer Address', style: AppTextStyles.titleSmall),
+            _labelText(text: 'Next Pay Day'),
+            _buildDatePickerField(
+              selectedDate: employmentProvider.nextPayDay,
+              onDateSelected: (date) =>
+                  employmentNotifier.updateNextPayDay(date),
+            ),
+            _labelText(text: 'Is your pay a direct deposit?'),
+            _buildRadioGroupField(
+              value: employmentProvider.directDeposit,
+              onChanged: (value) =>
+                  employmentNotifier.updateDirectDeposit(value!),
+            ),
+            _labelText(text: 'Employer Address'),
             _buildTextField(
-              initialValue: employment.employerAddress,
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
-                  .updateEmployerAddress(value),
+              initialValue: employmentProvider.employerAddress,
+              onChanged: (value) =>
+                  employmentNotifier.updateEmployerAddress(value),
               maxLines: 3,
             ),
-            Text('Time with Employer', style: AppTextStyles.titleSmall),
-            _buildTimeWithEmployerFields(employment),
-            Text('Next Pay Day', style: AppTextStyles.titleSmall),
-            _buildDatePickerField(
-              selectedDate: employment.nextPayDay,
-              onDateSelected: (date) => ref
-                  .read(employmentNotifierProvider.notifier)
-                  .updateNextPayDay(date),
-            ),
-            Text('Direct Deposits', style: AppTextStyles.titleSmall),
-            _buildRadioGroupField(
-              value: employment.directDeposit,
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
-                  .updateDirectDeposit(value!),
-            ),
-            ElevatedButton(
+            _labelText(text: 'Time with Employer'),
+            _buildTimeWithEmployerFields(employmentProvider),
+            AppGaps.vHugeGap,
+            AppGaps.vHugeGap,
+            ElevatedTextButton(
+                buttonData: ElevetedTextButtonModel(
+              padding: AppPadding.verticalLarge,
+              text: 'Continue',
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   // Form is valid, proceed with saving data
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Form submitted successfully')),
+                    const SnackBar(
+                        content: Text('Form submitted successfully')),
                   );
                 }
               },
-              child: const Text('Submit'),
-            ),
-         */
+              backgroundColor: Palette.lightGreyShade,
+              //borderColor: borderColor,
+              textColor: AppColor.darkPurple,
+            ))
           ],
         ),
       ),
     );
   }
 
+  Text _labelText({required String text}) {
+    return Text(text,
+        style: AppTextStyles.bodyLarge
+            .copyWith(fontWeight: FontWeight.bold, color: Palette.darkPurple));
+  }
+
   InputDecoration _inputDecoration() {
     return InputDecoration(
       filled: true,
       fillColor: Colors.white,
-      contentPadding: const EdgeInsets.all(16.0),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12.0),
-        borderSide: BorderSide.none,
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12.0),
+      contentPadding: AppPadding.allMedium,
+      enabledBorder: const OutlineInputBorder(
+        borderRadius: AppBorderRadius.card,
         borderSide: BorderSide.none,
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.0),
-        borderSide: BorderSide(color: Colors.blue),
+        borderSide: const BorderSide(color: Palette.deepPurple),
       ),
     );
   }
@@ -150,15 +142,18 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
     required ValueChanged<String?> onChanged,
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: AppPadding.verticalSmall,
       child: DropdownButtonFormField<String>(
-        decoration: _inputDecoration(),
+        dropdownColor: Palette.lightGrey,
+        icon: const Icon(Icons.expand_more),
+        decoration: _inputDecoration()
+            .copyWith(contentPadding: AppPadding.horizontalLarge),
         value: value,
         onChanged: onChanged,
         items: items.map((item) {
           return DropdownMenuItem(
             value: item,
-            child: Text(item),
+            child: SizedBox(child: Text(item)),
           );
         }).toList(),
       ),
@@ -190,26 +185,25 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
   }
 
   Widget _buildTimeWithEmployerFields(Employment employment) {
+    final employmentNotifier = ref.read(employmentNotifierProvider.notifier);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: AppPadding.allSmall,
       child: Row(
         children: [
           Expanded(
             child: _buildDropdownField(
               value: (employment.timeWithEmployer ~/ 12).toString(),
-              items: List.generate(21, (index) => index.toString()),
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
+              items: List.generate(11, (index) => index.toString()),
+              onChanged: (value) => employmentNotifier
                   .updateTimeWithEmployerYears(int.parse(value!)),
             ),
           ),
-          const SizedBox(width: 8),
+          AppGaps.hSmallGap,
           Expanded(
             child: _buildDropdownField(
               value: (employment.timeWithEmployer % 12).toString(),
-              items: List.generate(12, (index) => index.toString()),
-              onChanged: (value) => ref
-                  .read(employmentNotifierProvider.notifier)
+              items: List.generate(11, (index) => (index + 1).toString()),
+              onChanged: (value) => employmentNotifier
                   .updateTimeWithEmployerMonths(int.parse(value!)),
             ),
           ),
@@ -222,19 +216,22 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
     required DateTime selectedDate,
     required ValueChanged<DateTime> onDateSelected,
   }) {
+    DateTime now = DateTime.now();
+    DateTime lastDate = DateTime(now.year, now.month + 1, now.day);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
-        decoration: _inputDecoration(),
+        decoration:
+            _inputDecoration().copyWith(suffixIcon: Icon(Icons.calendar_month)),
         readOnly: true,
-        controller:
-            TextEditingController(text: DateFormat.yMd().format(selectedDate)),
+        controller: TextEditingController(
+            text: DateFormat.yMMMEd().format(selectedDate)),
         onTap: () async {
           DateTime? pickedDate = await showDatePicker(
             context: context,
             initialDate: selectedDate,
-            firstDate: DateTime(2000),
-            lastDate: DateTime(2101),
+            firstDate: selectedDate,
+            lastDate: lastDate,
           );
           if (pickedDate != null && pickedDate != selectedDate) {
             onDateSelected(pickedDate);
@@ -248,25 +245,29 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
     required DirectDeposit value,
     required ValueChanged<DirectDeposit?> onChanged,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          RadioListTile<DirectDeposit>(
+    return Row(
+      //direction: Axis.horizontal,
+      children: [
+        Expanded(
+          child: RadioListTile<DirectDeposit>(
+            //fillColor: Palette.white,
+            activeColor: Palette.deepPurple,
             title: const Text('Yes'),
             value: DirectDeposit.Yes,
             groupValue: value,
             onChanged: onChanged,
           ),
-          RadioListTile<DirectDeposit>(
+        ),
+        Expanded(
+          child: RadioListTile<DirectDeposit>(
+            activeColor: Palette.deepPurple,
             title: const Text('No'),
             value: DirectDeposit.No,
             groupValue: value,
             onChanged: onChanged,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
