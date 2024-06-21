@@ -19,11 +19,9 @@ class CreditUtilizationNotifier extends _$CreditUtilizationNotifier {
       MathUtils.calculatePercentage(state.totalBalance, state.totalLimit)
           .toInt();
 
-  Map<Color, LinearEdgeStyle> get gaugeRangeData => {
-        Palette.medGreen: LinearEdgeStyle.startCurve,
-        Palette.lightYellow: LinearEdgeStyle.bothFlat,
-        Palette.lightRed: LinearEdgeStyle.endCurve,
-      };
+  
+  List<Color> get gaugeColors =>
+      [Palette.medGreen, Palette.lightYellow, Palette.lightRed];
 
   Color tickColor(double value) {
     if (rate < 9 && value == 0.0) {

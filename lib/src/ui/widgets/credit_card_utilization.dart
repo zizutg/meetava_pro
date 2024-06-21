@@ -39,9 +39,15 @@ class CreditCardUtilization extends ConsumerWidget {
         _buildSfLinearGauge(ranges: [
           _buildCurrentCatagoryRange(creditCardUtilizationNotifier)
         ]),
-        _buildSfLinearGauge(
-            ranges: _generateGaugeRange(ref),
-            markerPointers: _generateMarkerPointers(ref)),
+        Container(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            decoration:
+                const BoxDecoration(borderRadius: AppBorderRadius.small),
+            child: _buildSfLinearGauge(
+              ranges: _generateGaugeRange(ref),
+              // markerPointers: _generateMarkerPointers(ref)),
+            )),
+        _buildSfLinearGauge(markerPointers: _generateMarkerPointers(ref)),
         _buildSfLinearGauge(ranges: _generateGaugeLabels(ref)),
 
         /* _buildGaugeWithLabels(rate),
@@ -118,7 +124,7 @@ class CreditCardUtilization extends ConsumerWidget {
   }
 
   SfLinearGauge _buildSfLinearGauge({
-    required List<LinearGaugeRange> ranges,
+    List<LinearGaugeRange> ranges = const [],
     List<LinearMarkerPointer> markerPointers = const [],
   }) {
     return SfLinearGauge(
@@ -136,13 +142,24 @@ class CreditCardUtilization extends ConsumerWidget {
     final creditCardUtilizationNotifier =
         ref.read(creditUtilizationNotifierProvider.notifier);
 
-    final gaugeRangeData = creditCardUtilizationNotifier.gaugeRangeData;
+    final gaugeRangeData = creditCardUtilizationNotifier.gaugeColors;
 
     double strartEnd = 0;
 
-    return gaugeRangeData.entries.map((entry) {
+    return gaugeRangeData.map((color) {
       LinearGaugeRange range = LinearGaugeRange(
-        edgeStyle: entry.value,
+        startWidth: AppSizes.spaceXL,
+        endWidth: AppSizes.spaceXL,
+        startValue: strartEnd,
+        endValue: strartEnd += 30,
+        color: color,
+        position: LinearElementPosition.outside,
+      );
+      return range;
+    }).toList();
+
+    /* return gaugeRangeData.entries.map((entry) {
+      LinearGaugeRange range = LinearGaugeRange(
         startWidth: AppSizes.spaceXL,
         endWidth: AppSizes.spaceXL,
         startValue: strartEnd,
@@ -151,7 +168,7 @@ class CreditCardUtilization extends ConsumerWidget {
         position: LinearElementPosition.outside,
       );
       return range;
-    }).toList();
+    }).toList(); */
   }
 
   TextSpan _buildTextSpan(String text, TextStyle style) {

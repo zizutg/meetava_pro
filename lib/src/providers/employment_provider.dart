@@ -93,4 +93,46 @@ class EmploymentNotifier extends _$EmploymentNotifier {
         return 'th';
     }
   }
+
+  void updateEmploymentType(String employmentType) {
+    state = state.copyWith(employmentType: employmentType);
+  }
+
+  void updateEmployer(String employer) {
+    state = state.copyWith(employer: employer);
+  }
+
+  void updateJobTitle(String jobTitle) {
+    state = state.copyWith(jobTitle: jobTitle);
+  }
+
+  void updateGrossAnnualIncome(double grossAnnualIncome) {
+    state = state.copyWith(grossAnnualIncome: grossAnnualIncome);
+  }
+
+  void updatePayFrequency(String payFrequency) {
+    state = state.copyWith(payFrequency: payFrequency);
+  }
+
+  void updateEmployerAddress(String employerAddress) {
+    state = state.copyWith(employerAddress: employerAddress);
+  }
+
+  void updateTimeWithEmployerYears(int years) {
+    int totalMonths = years * 12 + (state.timeWithEmployer % 12);
+    state = state.copyWith(timeWithEmployer: totalMonths);
+  }
+
+  void updateTimeWithEmployerMonths(int months) {
+    int totalMonths = (state.timeWithEmployer ~/ 12) * 12 + months;
+    state = state.copyWith(timeWithEmployer: totalMonths);
+  }
+
+  void updateNextPayDay(DateTime nextPayDay) {
+    state = state.copyWith(nextPayDay: nextPayDay);
+  }
+
+  void updateDirectDeposit(DirectDeposit directDeposit) {
+    state = state.copyWith(directDeposit: directDeposit);
+  }
 }

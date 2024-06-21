@@ -7,7 +7,7 @@ part of 'employment_provider.dart';
 // **************************************************************************
 
 String _$employmentNotifierHash() =>
-    r'599e42a431fbd202188b70db5b2b04cd3b1a1274';
+    r'd60074c389973a4ae6b2782be695abca0d4521bb';
 
 /// See also [EmploymentNotifier].
 @ProviderFor(EmploymentNotifier)

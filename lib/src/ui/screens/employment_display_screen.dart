@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import '../../src.dart';
 
 class EmploymentDisplayScreen extends ConsumerWidget {
@@ -15,7 +14,7 @@ class EmploymentDisplayScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Custom back icon
+          icon: const Icon(Icons.arrow_back), // Custom back icon
           onPressed: () {
             GoRouter.of(context).push('/');
           },
@@ -90,63 +89,6 @@ class EmploymentDisplayScreen extends ConsumerWidget {
       subtitle: Text(
         subtitle,
         style: AppTextStyles.titleLarge,
-      ),
-    );
-  }
-}
-
-class ElevetedTextButtonModel {
-  final String text;
-  final VoidCallback onPressed;
-  final Color backgroundColor;
-  final Color borderColor;
-  final Color textColor;
-  final double borderWidth;
-  final double borderRadius;
-
-  ElevetedTextButtonModel({
-    required this.text,
-    required this.onPressed,
-    required this.backgroundColor,
-    required this.borderColor,
-    required this.textColor,
-    required this.borderWidth,
-    required this.borderRadius,
-  });
-}
-
-class ElevatedTextButton extends StatelessWidget {
-  final ElevetedTextButtonModel model;
-
-  const ElevatedTextButton({super.key, required this.model});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: AppPadding.horizontalMedium,
-      child: SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: model.backgroundColor.withOpacity(1),
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                color: model.borderColor,
-                width: model.borderWidth,
-              ),
-              borderRadius: BorderRadius.circular(model.borderRadius),
-            ),
-          ),
-          onPressed: model.onPressed,
-          child: Padding(
-            padding: AppPadding.allSmall,
-            child: Text(
-              model.text,
-              style:
-                  AppTextStyles.headlineSmall.copyWith(color: model.textColor),
-            ),
-          ),
-        ),
       ),
     );
   }
