@@ -9,7 +9,7 @@ class AppRoutes {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) =>
-            const EmploymentDisplayScreen(),
+            const MeetAvaHome(),
       ),
       GoRoute(
         path: '/emp_disp',

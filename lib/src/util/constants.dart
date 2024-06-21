@@ -124,3 +124,13 @@ class AppBorderRadius {
   static const BorderRadius card = BorderRadius.all(Radius.circular(12.0));
   static const BorderRadius button = BorderRadius.all(Radius.circular(8.0));
 }
+
+enum DirectDeposit { Yes, No }
+
+enum TitleType {
+  timeWithEmployer,
+  grossAnnualIncome,
+  nextPayday,
+  directDeposit,
+  other
+}

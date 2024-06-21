@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../src.dart';
 
 class EmploymentDisplayScreen extends ConsumerWidget {
@@ -8,48 +9,79 @@ class EmploymentDisplayScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final employmentProvider = ref.watch(employmentNotifierProvider);
+    final employmentNotifier = ref.read(employmentNotifierProvider.notifier);
     final employmentMap = employmentProvider.toMap();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Employment Details')),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Custom back icon
+          onPressed: () {
+            GoRouter.of(context).push('/');
+          },
+        ),
+        backgroundColor: Palette.lightGrey,
+      ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: AppPadding.allMedium,
+            child: RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                  text: 'Confirm your employment\n',
+                  style: AppTextStyles.displayLarge
+                      .copyWith(fontFamily: 'AtSlamCndTRIAL')),
+              TextSpan(
+                  text:
+                      'Please review and confirm the below \nemployment details are up-to-date.',
+                  style: AppTextStyles.titleMedium
+                      .copyWith(color: Palette.lightPurple))
+            ])),
+          ),
           ListView(
             shrinkWrap: true,
             children: employmentMap.entries.map((entry) {
-              return buildListTile(entry.key, entry.value.toString());
+              String title = entry.key;
+              String subtitle = employmentNotifier.formatedString(
+                  title: entry.key,
+                  subTitle: entry.value.toString()); //entry.value.toString();
+
+              return _buildListTile(title, subtitle);
             }).toList(),
           ),
           const Spacer(),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Palette.lightGrey.withOpacity(1),
-                        shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                color: Palette.deepPurple,
-                                width: AppSizes.spaceXXS),
-                            borderRadius:
-                                BorderRadius.circular(AppSizes.spaceSmall))),
-                    onPressed: () {},
-                    child: Padding(
-                      padding: AppPadding.allSmall,
-                      child: Text(
-                        'Edit',
-                        style: AppTextStyles.headlineSmall
-                            .copyWith(color: Palette.deepPurple),
-                      ),
-                    ))),
-          )
+          ElevatedTextButton(
+              model: ElevetedTextButtonModel(
+            text: 'Edit',
+            onPressed: () => GoRouter.of(context).push('/emp_edit'),
+            backgroundColor: Palette.lightGrey,
+            borderColor: Palette.deepPurple,
+            textColor: Palette.deepPurple,
+            borderWidth: AppSizes.spaceXXS,
+            borderRadius: AppSizes.spaceSmall,
+          )),
+          AppGaps.vSmallGap,
+          ElevatedTextButton(
+              model: ElevetedTextButtonModel(
+            text: 'Confirm',
+            onPressed: () {
+              // Handle button press
+            },
+            backgroundColor: Palette.deepPurple,
+            borderColor: Colors.transparent,
+            textColor: Palette.white,
+            borderWidth: AppSizes.spaceXXS,
+            borderRadius: AppSizes.spaceSmall,
+          )),
+          AppGaps.vSmallGap,
         ],
       ),
     );
   }
 
-  ListTile buildListTile(String title, String subtitle) {
+  ListTile _buildListTile(String title, String subtitle) {
     return ListTile(
       title: Text(
         title,
@@ -58,6 +90,63 @@ class EmploymentDisplayScreen extends ConsumerWidget {
       subtitle: Text(
         subtitle,
         style: AppTextStyles.titleLarge,
+      ),
+    );
+  }
+}
+
+class ElevetedTextButtonModel {
+  final String text;
+  final VoidCallback onPressed;
+  final Color backgroundColor;
+  final Color borderColor;
+  final Color textColor;
+  final double borderWidth;
+  final double borderRadius;
+
+  ElevetedTextButtonModel({
+    required this.text,
+    required this.onPressed,
+    required this.backgroundColor,
+    required this.borderColor,
+    required this.textColor,
+    required this.borderWidth,
+    required this.borderRadius,
+  });
+}
+
+class ElevatedTextButton extends StatelessWidget {
+  final ElevetedTextButtonModel model;
+
+  const ElevatedTextButton({super.key, required this.model});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: AppPadding.horizontalMedium,
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: model.backgroundColor.withOpacity(1),
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                color: model.borderColor,
+                width: model.borderWidth,
+              ),
+              borderRadius: BorderRadius.circular(model.borderRadius),
+            ),
+          ),
+          onPressed: model.onPressed,
+          child: Padding(
+            padding: AppPadding.allSmall,
+            child: Text(
+              model.text,
+              style:
+                  AppTextStyles.headlineSmall.copyWith(color: model.textColor),
+            ),
+          ),
+        ),
       ),
     );
   }

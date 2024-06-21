@@ -1,3 +1,5 @@
+import '../src.dart';
+
 class Employment {
   final String employmentType;
   final String employer;
@@ -5,10 +7,9 @@ class Employment {
   final double grossAnnualIncome;
   final String payFrequency;
   final String employerAddress;
-  final int yearsWithEmployer;
-  final int monthsWithEmployer;
+  final int timeWithEmployer; // in months
   final DateTime nextPayDay;
-  final bool directDeposits;
+  final DirectDeposit directDeposit;
 
   Employment({
     required this.employmentType,
@@ -17,10 +18,9 @@ class Employment {
     required this.grossAnnualIncome,
     required this.payFrequency,
     required this.employerAddress,
-    required this.yearsWithEmployer,
-    required this.monthsWithEmployer,
+    required this.timeWithEmployer,
     required this.nextPayDay,
-    required this.directDeposits,
+    required this.directDeposit,
   });
 
   Employment copyWith({
@@ -30,10 +30,9 @@ class Employment {
     double? grossAnnualIncome,
     String? payFrequency,
     String? employerAddress,
-    int? yearsWithEmployer,
-    int? monthsWithEmployer,
+    int? timeWithEmployer,
     DateTime? nextPayDay,
-    bool? directDeposits,
+    DirectDeposit? directDeposit,
   }) {
     return Employment(
       employmentType: employmentType ?? this.employmentType,
@@ -42,40 +41,37 @@ class Employment {
       grossAnnualIncome: grossAnnualIncome ?? this.grossAnnualIncome,
       payFrequency: payFrequency ?? this.payFrequency,
       employerAddress: employerAddress ?? this.employerAddress,
-      yearsWithEmployer: yearsWithEmployer ?? this.yearsWithEmployer,
-      monthsWithEmployer: monthsWithEmployer ?? this.monthsWithEmployer,
+      timeWithEmployer: timeWithEmployer ?? this.timeWithEmployer,
       nextPayDay: nextPayDay ?? this.nextPayDay,
-      directDeposits: directDeposits ?? this.directDeposits,
+      directDeposit: directDeposit ?? this.directDeposit,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'Employment Type': employmentType,
+      'Employment type': employmentType,
       'Employer': employer,
-      'Job Title': jobTitle,
-      'Gross Annual Income': grossAnnualIncome,
-      'Pay Frequency': payFrequency,
-      'Employer Address': employerAddress,
-      'Years with Employer': yearsWithEmployer,
-      'Months with Employer': monthsWithEmployer,
-      'Next Pay Day': nextPayDay.toIso8601String(),
-      'Direct Deposits': directDeposits,
+      'Job title': jobTitle,
+      'Gross annual income': grossAnnualIncome,
+      'Pay frequency': payFrequency,
+      'Employer address': employerAddress,
+      'Time with employer': timeWithEmployer,
+      'Next payday': nextPayDay.toIso8601String(),
+      'Is your pay direct deposit?': directDeposit,
     };
   }
 
   factory Employment.fromMap(Map<String, dynamic> map) {
     return Employment(
-      employmentType: map['Employment Type'] ?? '',
+      employmentType: map['Employment type'] ?? '',
       employer: map['Employer'] ?? '',
-      jobTitle: map['Job Title'] ?? '',
-      grossAnnualIncome: map['Gross Annual Income']?.toDouble() ?? 0.0,
-      payFrequency: map['Pay Frequency'] ?? '',
-      employerAddress: map['Employer Address'] ?? '',
-      yearsWithEmployer: map['Years with Employer'] ?? 0,
-      monthsWithEmployer: map['Months with Employer'] ?? 0,
-      nextPayDay: DateTime.parse(map['Next Pay Day']),
-      directDeposits: map['Direct Deposits'] ?? false,
+      jobTitle: map['Job title'] ?? '',
+      grossAnnualIncome: map['Gross annual income']?.toDouble() ?? 0.0,
+      payFrequency: map['Pay frequency'] ?? '',
+      employerAddress: map['Employer address'] ?? '',
+      timeWithEmployer: map['Time with employer'] ?? 0,
+      nextPayDay: DateTime.parse(map['Next payday']),
+      directDeposit: map['Is your pay direct deposit?'] ?? DirectDeposit.Yes,
     );
   }
 }
