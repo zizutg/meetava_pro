@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meetava_pro/src/util/constants.dart';
 import '../../src.dart';
 
 class MeetAvaHome extends ConsumerStatefulWidget {

@@ -14,8 +14,8 @@ class WhiteRoundedConstainer extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border.all(
               color:
-                  Palette.lightPurple.withOpacity(0.2), // Color of the border
-              width: 1, // Width of the border
+                  Palette.lightPurple.withOpacity(0.2), 
+              width: 1, 
             ),
             color: Palette.white,
             borderRadius: AppBorderRadius.large),

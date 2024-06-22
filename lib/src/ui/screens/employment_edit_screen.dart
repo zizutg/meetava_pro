@@ -262,11 +262,9 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
     required ValueChanged<DirectDeposit?> onChanged,
   }) {
     return Row(
-      //direction: Axis.horizontal,
       children: [
         Expanded(
           child: RadioListTile<DirectDeposit>(
-            //fillColor: Palette.white,
             activeColor: Palette.deepPurple,
             title: const Text('Yes'),
             value: DirectDeposit.Yes,

@@ -1,4 +1,3 @@
-
 class OpenAccountModel {
   final String accountName;
   final int balance;

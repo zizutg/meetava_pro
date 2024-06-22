@@ -1,4 +1,3 @@
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
 import '../src.dart';
 part 'credit_card_factor_provider.g.dart';

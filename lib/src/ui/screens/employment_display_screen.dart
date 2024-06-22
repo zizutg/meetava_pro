@@ -14,7 +14,7 @@ class EmploymentDisplayScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back), // Custom back icon
+          icon: const Icon(Icons.arrow_back), 
           onPressed: () {
             GoRouter.of(context).go('/');
           },
@@ -22,7 +22,6 @@ class EmploymentDisplayScreen extends ConsumerWidget {
         backgroundColor: Palette.lightGrey,
       ),
       body: Column(
-        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: AppPadding.allMedium,
@@ -45,7 +44,7 @@ class EmploymentDisplayScreen extends ConsumerWidget {
               String title = entry.key;
               String subtitle = employmentNotifier.formatedString(
                   title: entry.key,
-                  subTitle: entry.value.toString()); //entry.value.toString();
+                  subTitle: entry.value.toString()); 
 
               return _buildListTile(title, subtitle);
             }).toList(),

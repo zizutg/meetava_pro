@@ -1,4 +1,3 @@
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../src.dart';
 part 'open_account_provider.g.dart';
 

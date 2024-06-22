@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../src.dart';
 
 class FeedbackWidget extends StatelessWidget {
@@ -16,7 +15,6 @@ class FeedbackWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: AppSizes.spaceMedium),
         child: Container(
-          //color: Palette.lightGrey,
           width: double.infinity,
           padding: AppPadding.allSmall,
           decoration: const BoxDecoration(
@@ -27,7 +25,6 @@ class FeedbackWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              //AppGaps.vMedGap,
               Padding(
                 padding: AppPadding.allSmall,
                 child: Column(

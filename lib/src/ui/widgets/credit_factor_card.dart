@@ -45,6 +45,7 @@ class CreditFactorCard extends ConsumerWidget {
             ),
             AppGaps.vLargeGap,
             Container(
+              //TODO: Change with app constant
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
                 color: creditCardFactorNotifier
@@ -53,6 +54,7 @@ class CreditFactorCard extends ConsumerWidget {
               ),
               child: Text(
                 '${creditFactorModel.status.toUpperCase()} IMPACT',
+                //TODO: Change with app constant
                 style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import '../../src.dart';
+
 class AccountDetailsWidget extends ConsumerWidget {
   const AccountDetailsWidget({super.key});
 
@@ -75,16 +76,14 @@ class AccountDetailsWidget extends ConsumerWidget {
     return SfSliderTheme(
       data: const SfSliderThemeData(
         overlayRadius: 0,
-
-        activeTrackHeight: 8,
-        inactiveTrackHeight: 8,
+        activeTrackHeight: AppSizes.spaceSmall,
+        inactiveTrackHeight: AppSizes.spaceSmall,
         activeTrackColor: Palette.lightGreen,
         inactiveTrackColor: Palette.lightGreen,
         thumbStrokeColor: Palette.medGreen,
         thumbColor: Palette.medGreen,
         tooltipBackgroundColor: Palette.deepPurple,
-        //activeco
-        thumbRadius: 3,
+        thumbRadius: AppSizes.spaceXXS,
       ),
       child: SfSlider(
           min: 0,

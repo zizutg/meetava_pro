@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '../../src.dart';
-import 'package:intl/intl.dart';
 
 class CreditCardUtilization extends ConsumerWidget {
   const CreditCardUtilization({super.key});
@@ -45,14 +44,12 @@ class CreditCardUtilization extends ConsumerWidget {
                 const BoxDecoration(borderRadius: AppBorderRadius.small),
             child: _buildSfLinearGauge(
               ranges: _generateGaugeRange(ref),
-              // markerPointers: _generateMarkerPointers(ref)),
+              
             )),
         _buildSfLinearGauge(markerPointers: _generateMarkerPointers(ref)),
         _buildSfLinearGauge(ranges: _generateGaugeLabels(ref)),
 
-        /* _buildGaugeWithLabels(rate),
-        _buildColoredGauge(),
-        _buildPercentageLabels(rate), */
+       
       ],
     ));
   }

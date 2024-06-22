@@ -1,8 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:meetava_pro/src/src.dart';
-import 'package:meetava_pro/src/util/constants.dart';
-import '../src.dart';
 
 class ElevetedTextButtonModel {
   final String text;
