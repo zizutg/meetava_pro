@@ -16,13 +16,13 @@ class EmploymentDisplayScreen extends ConsumerWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back), // Custom back icon
           onPressed: () {
-            GoRouter.of(context).push('/');
+            GoRouter.of(context).go('/');
           },
         ),
         backgroundColor: Palette.lightGrey,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: AppPadding.allMedium,
@@ -66,7 +66,11 @@ class EmploymentDisplayScreen extends ConsumerWidget {
               buttonData: ElevetedTextButtonModel(
             text: 'Confirm',
             onPressed: () {
-              // Handle button press
+              final showFeedbackModal =
+                  ref.read(showModalNotifierProvider.notifier);
+              showFeedbackModal.show();
+
+              GoRouter.of(context).go('/');
             },
             backgroundColor: Palette.deepPurple,
             borderColor: Colors.transparent,

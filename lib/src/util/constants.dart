@@ -110,7 +110,7 @@ class AppSizes {
 
   static const double cardElevation = 2.0;
   static const double borderRadius = 10.0;
-  static const double lineHeight = 1.5; // Line height for text
+  static const double lineHeight = 1.5; 
 }
 
 class AppBorderRadius {

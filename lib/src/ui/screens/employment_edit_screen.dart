@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../src.dart';
 
 class EmploymentEditScreen extends ConsumerStatefulWidget {
-  const EmploymentEditScreen({Key? key}) : super(key: key);
+  const EmploymentEditScreen({super.key});
 
   @override
   EmploymentEditScreenState createState() => EmploymentEditScreenState();
@@ -97,11 +97,7 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
               text: 'Continue',
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  // Form is valid, proceed with saving data
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                        content: Text('Form submitted successfully')),
-                  );
+                  GoRouter.of(context).go('/emp_disp');
                 }
               },
               backgroundColor: Palette.lightGreyShade,
@@ -153,7 +149,7 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
         items: items.map((item) {
           return DropdownMenuItem(
             value: item,
-            child: SizedBox(child: Text(item)),
+            child: Text(item),
           );
         }).toList(),
       ),
@@ -167,7 +163,7 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
     int maxLines = 1,
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: AppPadding.verticalSmall,
       child: TextFormField(
         decoration: _inputDecoration(),
         initialValue: initialValue,
@@ -175,7 +171,7 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
         keyboardType: keyboardType,
         maxLines: maxLines,
         validator: (value) {
-          if (value == null || value.isEmpty) {
+          if (value!.isEmpty) {
             return 'This field is required';
           }
           return null;
@@ -216,22 +212,42 @@ class EmploymentEditScreenState extends ConsumerState<EmploymentEditScreen> {
     required DateTime selectedDate,
     required ValueChanged<DateTime> onDateSelected,
   }) {
-    DateTime now = DateTime.now();
-    DateTime lastDate = DateTime(now.year, now.month + 1, now.day);
+    DateTime today = DateTime.now();
+    DateTime lastDate = DateTime(today.year, today.month + 1, today.day);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: AppPadding.verticalSmall,
       child: TextFormField(
-        decoration:
-            _inputDecoration().copyWith(suffixIcon: Icon(Icons.calendar_month)),
+        decoration: _inputDecoration()
+            .copyWith(suffixIcon: const Icon(Icons.calendar_month_rounded)),
         readOnly: true,
         controller: TextEditingController(
             text: DateFormat.yMMMEd().format(selectedDate)),
         onTap: () async {
           DateTime? pickedDate = await showDatePicker(
+            barrierLabel: 'Select Next Pay Day',
             context: context,
-            initialDate: selectedDate,
+            initialDate: today,
             firstDate: selectedDate,
             lastDate: lastDate,
+            builder: (BuildContext context, Widget? child) {
+              return Theme(
+                data: Theme.of(context).copyWith(
+                  colorScheme: const ColorScheme.light(
+                    primary: Palette.deepPurple,
+                    onPrimary: Colors.white,
+                    onSurface: Palette.lightPurple,
+                  ),
+                  textButtonTheme: TextButtonThemeData(
+                    style: TextButton.styleFrom(
+                      textStyle: AppTextStyles.bodyLarge,
+                      foregroundColor: Palette.white,
+                      backgroundColor: Palette.deepPurple, // button text color
+                    ),
+                  ),
+                ),
+                child: child ?? const SizedBox.shrink(),
+              );
+            },
           );
           if (pickedDate != null && pickedDate != selectedDate) {
             onDateSelected(pickedDate);

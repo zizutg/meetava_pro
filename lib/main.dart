@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meetava_pro/src/src.dart';
-import 'package:meetava_pro/src/ui/screens/employment_display_screen.dart';
-import 'package:meetava_pro/src/ui/screens/employment_edit_screen.dart';
-import 'package:meetava_pro/src/ui/screens/home_screen.dart';
-import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(ProviderScope(child: MeetAvaApp()));
