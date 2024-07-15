@@ -6,7 +6,7 @@ part of 'show_feedback_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$showModalNotifierHash() => r'49a2f866ae4f7bac679c580a03a24f9ad517dbab';
+String _$showModalNotifierHash() => r'fef49ee7829e75d362cb2eef3c82e39525ac5b45';
 
 /// See also [ShowModalNotifier].
 @ProviderFor(ShowModalNotifier)
